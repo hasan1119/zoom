@@ -1,5 +1,6 @@
 .main {
-    height: 100vh;
+    /* height: 100vh; */
+    height: auto;
     display: flex;
 }
 
@@ -50,6 +51,7 @@
     padding: 8px 10px;
     min-width: 80px;
     cursor: pointer;
+    position: relative;
 }
 
 .main__controls__button:hover {
@@ -59,6 +61,60 @@
 
 .main__controls__button i {
     font-size: 24px;
+}
+
+.drop_ups_btns {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    right: 0;
+}
+
+.drop_up_btn {
+    max-width: 30px;
+    height: 35px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #D2D2D2;
+    border-radius: 7px;
+}
+
+.drop_ups_btn.dropdown-toggle::after{
+    margin-right: 4px;
+}
+
+.drop_up_btn:hover {
+    background: #242324;
+}
+
+
+.dropdown-menu {
+    max-width: 420px;
+    width: fit-content;
+    background: #242324;
+    color: #F5F5F5;
+    padding: 15px 5px 5px 10px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.dropdown-item {
+    background: #242324;
+    color: #F5F5F5;
+    font-size: 14px;
+    font-weight: 100;
+    transition: 0.4s ease-in-out;
+}
+
+.dropdown-item:hover {
+    background: #1E90FF;
+    color: #D2D2D2;
+}
+
+.dropdown-divider {
+    background: #696969;
 }
 
 .main__right {
@@ -72,7 +128,7 @@
     text-align: center;
 }
 
-.main__chat_window {
+.main__chat_window, .main__participants_window {
     flex-grow: 1;
     overflow-y: auto;
 }
@@ -82,9 +138,10 @@
     list-style: none;
 }
 
-.main__message_container {
+.main__message_container, .main__participant_container {
     padding: 22px 12px;
     display: flex;
+    
 }
 
 .main__message_container input {
@@ -92,6 +149,15 @@
     background-color: transparent;
     border: none;
     color: #F5F5F5;
+    width: 80%;
+}
+
+.main__message_container button {
+    width: 20%;
+    background: transparent;
+    border: 0;
+    color: #1E90FF;
+    
 }
 
 .leave_meeting {
@@ -100,5 +166,46 @@
 
 .unmute, .stop {
     color: #CC3B33;
+}
+
+.right_dropdown_btn {
+    background: transparent;
+    color: #D2D2D2;
+    border: 0;
+}
+
+.participant {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.participant_detail img{
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+
+.participant_name {
+    color: #D2D2D2;
+    padding-left: 10px;
+}
+
+.participant_icons {
+    color: #D2D2D2;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.invite_btn, .mute-all-btn {
+    border: 0;
+    outline: 0;
+    background: #1E90FF;
+    color: #D2D2D2;
+    border-radius: 4px;
+    padding: 5px 10px;
 }
 
