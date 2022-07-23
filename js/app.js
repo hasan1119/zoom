@@ -24,19 +24,18 @@ participantButton.addEventListener('click', function (e) {
 
 
 [... videoGrid.children].forEach( el => {
-    // console.log(el.className.split(" ")[1]);
-    const elementId = el.className.split(" ")[1];
+      el.addEventListener('click', function (e) {
+        // console.log(e.target);
+          
+          if (el.id === e.target.id) {
+              console.log(el.id);
+              const name = el.id;
 
-    // console.log([...el.children]);
-    [...el.children].forEach(i => {
-        // console.log([... i.children]);
-
-        [...i.children].forEach(element => {
-            console.log(element);
-
-            // [...element.children].forEach(item => {
-            //     console.log(item[1]);
-            // })
-        })
+              if (el.id) {
+                  
+              }
+          } 
     })
+
+
 });

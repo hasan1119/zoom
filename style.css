@@ -179,7 +179,7 @@
 }
 
 .main__participant_container {
-    margin-top: 75%;
+    margin-top: 72%;
 }
 
 .main__message_container input {
@@ -253,5 +253,9 @@
 }
 
 #participant_box {
-    display: block;
+    display: none;
 }
+
+/* .content-detail {
+    display: none;
+} */
