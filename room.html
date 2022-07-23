@@ -13,7 +13,7 @@
       <script src="/socket.io/socket.io.js" defer></script>
       <link rel="stylesheet" href="style.css">
       <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
-      <script src="script.js" defer></script>
+      <script src="./js/app.js" defer></script>
       <style>
          #video-grid {
             display: flex;
@@ -35,20 +35,41 @@
          <div class="main__left">
             <div class="main__videos">
                <div id="video-grid">
-                  <div class="video_container">
-                     <video autoplay src="https://www.w3schools.com/tags/movie.mp4"></video>
+
+                  <div class="video_container video_one">
+                     <video src="https://www.w3schools.com/tags/movie.mp4"></video>
 
                      <div class="video-content">
-                        <span></span>
+                        <span><i class="fas fa-volume-mute"></i></span>
+                        <span id="expand" class="video_one"><i class="fas fa-expand"></i></span>
                      </div>
                   </div>
 
-                  <div class="video_container">
-                     <video autoplay src="https://www.w3schools.com/tags/movie.mp4"></video>
+                  <div class="video_container video_two">
+                     <video src="https://www.w3schools.com/tags/movie.mp4"></video>
+
+                     <div class="video-content">
+                        <span><i class="fas fa-volume-mute"></i></span>
+                        <span id="expand" class="video_two"><i class="fas fa-expand"></i></span>
+                     </div>
                   </div>
 
-                  <div class="video_container">
-                     <video autoplay src="https://www.w3schools.com/tags/movie.mp4"></video>
+                  <div class="video_container video_three">
+                     <video src="https://www.w3schools.com/tags/movie.mp4"></video>
+
+                     <div class="video-content">
+                        <span><i class="fas fa-volume-mute"></i></span>
+                        <span id="expand" class="video_three"><i class="fas fa-expand"></i></span>
+                     </div>
+                  </div>
+
+                  <div class="video_container video_four">
+                     <video src="https://www.w3schools.com/tags/movie.mp4"></video>
+
+                     <div class="video-content">
+                        <span><i class="fas fa-volume-mute"></i></span>
+                        <span id="expand" class="video_four"><i class="fas fa-expand"></i></span>
+                     </div>
                   </div>
 
                </div>
@@ -125,7 +146,8 @@
                      <i class="fas fa-shield-alt"></i>
                      <span>Security</span>
                   </div>
-                  <div class="main__controls__button">
+
+                  <div class="main__controls__button" id="participant_button">
                      <i class="fas fa-user-friends"></i>
                      <span>Participants</span>
 
@@ -141,7 +163,8 @@
 
                      </div>
                   </div>
-                  <div class="main__controls__button">
+
+                  <div class="main__controls__button" id="chat_button">
                      <i class="fas fa-comment-alt"></i>
                      <span>Chat</span>
 
@@ -191,140 +214,142 @@
          </div>
 
          <div class="main__right">
+            <div id="chat_box">
+               <div class="main__header mt-2">
+                  <h6>Chat</h6>
+               </div>
+               <div class="main__chat_window">
+                  <ul class="messages">
 
-            <!------Chat box start------->
-            <div class="main__header mt-2">
-               <h6>Chat</h6>
+                  </ul>
+
+               </div>
+               <div class="main__message_container">
+                  <input id="chat_message" type="text" placeholder="Type message here...">
+                  <button><i class="fas fa-paper-plane"></i></button>
+               </div>
             </div>
-            <div class="main__chat_window">
-               <ul class="messages">
-
-               </ul>
-
-            </div>
-            <div class="main__message_container">
-               <input id="chat_message" type="text" placeholder="Type message here...">
-               <button><i class="fas fa-paper-plane"></i></button>
-            </div>
 
 
-            <!-----Participants start-->
-            <!-- <div class="main__header d-flex mt-2">
+            <div id="participant_box">
+               <div class="main__header d-flex mt-2">
 
-               <div class="dropdown right_dropdowns_btns">
-                  <button class="right_dropdown_btn dropdown-toggle ms-2" type="button" data-bs-toggle="dropdown"
-                     aria-expanded="false">
-                  </button>
-                  <ul class="dropdown-menu">
-                     <li><a class="dropdown-item" href="#"><i class="fas fa-times"></i> Close</a></li>
-                     <li><a class="dropdown-item" href="#"><i class="fas fa-map-pin"></i> Pop Out</a>
+                  <div class="dropdown right_dropdowns_btns">
+                     <button class="right_dropdown_btn dropdown-toggle ms-2" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                     </button>
+                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-times"></i> Close</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-map-pin"></i> Pop Out</a>
+                        </li>
+                     </ul>
+                  </div>
+                  <h6 class="mx-auto">Participants (8)</h6>
+               </div>
+
+
+               <div class="main__participants_window mt-4">
+                  <ul class="participants_list">
+                     <li class="participant mt-3">
+                        <div class="participant_detail">
+                           <span class="paritcipant_img"><img src="./assets/user/profile.jpg" alt=""></span>
+                           <span class="participant_name">Fatema Tuj Jahira</span>
+                        </div>
+                        <div class="d-flex justify-content-center px-3">
+                           <span class="participant_icons"><i class="fas fa-microphone"></i></span>
+                           <span class="participant_icons"> <i class="fas fa-video"></i></span>
+                        </div>
+                     </li>
+
+                     <li class="participant mt-3">
+                        <div class="participant_detail">
+                           <span class="paritcipant_img"><img src="./assets/user/profile2.jpg" alt=""></span>
+                           <span class="participant_name">Feerdous Alam</span>
+                        </div>
+                        <div class="d-flex justify-content-center px-3">
+                           <span class="participant_icons"><i class="fas fa-microphone"></i></span>
+                           <span class="participant_icons"> <i class="fas fa-video"></i></span>
+                        </div>
+                     </li>
+
+                     <li class="participant mt-3">
+                        <div class="participant_detail">
+                           <span class="paritcipant_img"><img src="./assets/user/profile3.jpg" alt=""></span>
+                           <span class="participant_name">שִׂמְחָה סרקר</span>
+                        </div>
+                        <div class="d-flex justify-content-center px-3">
+                           <span class="participant_icons"><i class="fas fa-microphone"></i></span>
+                           <span class="participant_icons"> <i class="fas fa-video"></i></span>
+                        </div>
+                     </li>
+
+                     <li class="participant mt-3">
+                        <div class="participant_detail">
+                           <span class="paritcipant_img"><img src="./assets/user/profile4.jpg" alt=""></span>
+                           <span class="participant_name">Dipto Das</span>
+                        </div>
+                        <div class="d-flex justify-content-center px-3">
+                           <span class="participant_icons"><i class="fas fa-microphone"></i></span>
+                           <span class="participant_icons"> <i class="fas fa-video"></i></span>
+                        </div>
+                     </li>
+
+                     <li class="participant mt-3">
+                        <div class="participant_detail">
+                           <span class="paritcipant_img"><img src="./assets/user/profile5.jpg" alt=""></span>
+                           <span class="participant_name">Md. Gulamur Rahman</span>
+                        </div>
+                        <div class="d-flex justify-content-center px-3">
+                           <span class="participant_icons"><i class="fas fa-microphone"></i></span>
+                           <span class="participant_icons"> <i class="fas fa-video"></i></span>
+                        </div>
+                     </li>
+
+                     <li class="participant mt-3">
+                        <div class="participant_detail">
+                           <span class="paritcipant_img"><img src="./assets/user/profile6.jpg" alt=""></span>
+                           <span class="participant_name">Programmer Wahid</span>
+                        </div>
+                        <div class="d-flex justify-content-center px-3">
+                           <span class="participant_icons"><i class="fas fa-microphone"></i></span>
+                           <span class="participant_icons"> <i class="fas fa-video"></i></span>
+                        </div>
+                     </li>
+
+                     <li class="participant mt-3">
+                        <div class="participant_detail">
+                           <span class="paritcipant_img"><img src="./assets/user/profile7.jpg" alt=""></span>
+                           <span class="participant_name">Mehedi Hasan</span>
+                        </div>
+                        <div class="d-flex justify-content-center px-3">
+                           <span class="participant_icons"><i class="fas fa-microphone"></i></span>
+                           <span class="participant_icons"> <i class="fas fa-video"></i></span>
+                        </div>
+                     </li>
+
+                     <li class="participant mt-3">
+                        <div class="participant_detail">
+                           <span class="paritcipant_img"><img src="./assets/user/profile8.jpg" alt=""></span>
+                           <span class="participant_name">Md. Rokibul Hasan</span>
+                        </div>
+                        <div class="d-flex justify-content-center px-3">
+                           <span class="participant_icons"><i class="fas fa-microphone"></i></span>
+                           <span class="participant_icons"> <i class="fas fa-video"></i></span>
+                        </div>
                      </li>
                   </ul>
+
                </div>
-               <h6 class="mx-auto">Participants (8)</h6>
+
+               <div class="main__participant_container justify-content-around">
+                  <button class="invite_btn">Invite</button>
+
+                  <button class="mute-all-btn">Mute All</button>
+
+               </div>
             </div>
-
-
-            <div class="main__participants_window mt-4">
-               <ul class="participants_list">
-                  <li class="participant mt-3">
-                     <div class="participant_detail">
-                        <span class="paritcipant_img"><img src="./assets/user/profile.jpg" alt=""></span>
-                        <span class="participant_name">Fatema Tuj Jahira</span>
-                     </div>
-                     <div class="d-flex justify-content-center px-3">
-                        <span class="participant_icons"><i class="fas fa-microphone"></i></span>
-                        <span class="participant_icons"> <i class="fas fa-video"></i></span>
-                     </div>
-                  </li>
-
-                  <li class="participant mt-3">
-                     <div class="participant_detail">
-                        <span class="paritcipant_img"><img src="./assets/user/profile2.jpg" alt=""></span>
-                        <span class="participant_name">Feerdous Alam</span>
-                     </div>
-                     <div class="d-flex justify-content-center px-3">
-                        <span class="participant_icons"><i class="fas fa-microphone"></i></span>
-                        <span class="participant_icons"> <i class="fas fa-video"></i></span>
-                     </div>
-                  </li>
-
-                  <li class="participant mt-3">
-                     <div class="participant_detail">
-                        <span class="paritcipant_img"><img src="./assets/user/profile3.jpg" alt=""></span>
-                        <span class="participant_name">שִׂמְחָה סרקר</span>
-                     </div>
-                     <div class="d-flex justify-content-center px-3">
-                        <span class="participant_icons"><i class="fas fa-microphone"></i></span>
-                        <span class="participant_icons"> <i class="fas fa-video"></i></span>
-                     </div>
-                  </li>
-
-                  <li class="participant mt-3">
-                     <div class="participant_detail">
-                        <span class="paritcipant_img"><img src="./assets/user/profile4.jpg" alt=""></span>
-                        <span class="participant_name">Dipto Das</span>
-                     </div>
-                     <div class="d-flex justify-content-center px-3">
-                        <span class="participant_icons"><i class="fas fa-microphone"></i></span>
-                        <span class="participant_icons"> <i class="fas fa-video"></i></span>
-                     </div>
-                  </li>
-
-                  <li class="participant mt-3">
-                     <div class="participant_detail">
-                        <span class="paritcipant_img"><img src="./assets/user/profile5.jpg" alt=""></span>
-                        <span class="participant_name">Md. Gulamur Rahman</span>
-                     </div>
-                     <div class="d-flex justify-content-center px-3">
-                        <span class="participant_icons"><i class="fas fa-microphone"></i></span>
-                        <span class="participant_icons"> <i class="fas fa-video"></i></span>
-                     </div>
-                  </li>
-
-                  <li class="participant mt-3">
-                     <div class="participant_detail">
-                        <span class="paritcipant_img"><img src="./assets/user/profile6.jpg" alt=""></span>
-                        <span class="participant_name">Programmer Wahid</span>
-                     </div>
-                     <div class="d-flex justify-content-center px-3">
-                        <span class="participant_icons"><i class="fas fa-microphone"></i></span>
-                        <span class="participant_icons"> <i class="fas fa-video"></i></span>
-                     </div>
-                  </li>
-
-                  <li class="participant mt-3">
-                     <div class="participant_detail">
-                        <span class="paritcipant_img"><img src="./assets/user/profile7.jpg" alt=""></span>
-                        <span class="participant_name">Mehedi Hasan</span>
-                     </div>
-                     <div class="d-flex justify-content-center px-3">
-                        <span class="participant_icons"><i class="fas fa-microphone"></i></span>
-                        <span class="participant_icons"> <i class="fas fa-video"></i></span>
-                     </div>
-                  </li>
-
-                  <li class="participant mt-3">
-                     <div class="participant_detail">
-                        <span class="paritcipant_img"><img src="./assets/user/profile8.jpg" alt=""></span>
-                        <span class="participant_name">Md. Rokibul Hasan</span>
-                     </div>
-                     <div class="d-flex justify-content-center px-3">
-                        <span class="participant_icons"><i class="fas fa-microphone"></i></span>
-                        <span class="participant_icons"> <i class="fas fa-video"></i></span>
-                     </div>
-                  </li>
-               </ul>
-
-            </div>
-
-            <div class="main__participant_container justify-content-around">
-               <button class="invite_btn">Invite</button>
-
-               <button class="mute-all-btn">Mute All</button>
-
-            </div> -->
          </div>
+
 
 
 
